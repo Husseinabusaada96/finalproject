@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SDG 3 Health Web GIS Dashboard</title>
+
+    <!-- Leaflet CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="header">
+                <h1>SDG 3 Dashboard </h1>
+                 <h2> Done by Eng. Hussein Abusaada</h2>
+                <p>Health and Life Expectancy by Country</p>
+            </div>
+
+            <div class="control-box">
+                <label for="indicatorSelect">Select Health Indicator</label>
+                <select id="indicatorSelect">
+                    <option value="SP.DYN.LE00.IN">
+                        Life Expectancy at Birth
+                    </option>
+                    <option value="SH.DYN.MORT">
+                        Under-5 Mortality Rate
+                    </option>
+                    <option value="SH.XPD.CHEX.PC.CD">
+                        Health Expenditure per Capita
+                    </option>
+                </select>
+            </div>
+
+            <div class="control-box">
+                <label for="yearSlider">Select Year: <span id="yearValue">2021</span></label>
+                <input
+                    type="range"
+                    id="yearSlider"
+                    min="2000"
+                    max="2023"
+                    value="2021"
+                    step="1"
+                />
+            </div>
+
+            <div class="control-box">
+                <label for="countrySearch">Search Country</label>
+                <input
+                    type="text"
+                    id="countrySearch"
+                    placeholder="Example: Palestine, Jordan, France"
+                />
+            </div>
+
+            <div class="info-box">
+                <h3>Current Indicator</h3>
+                <p id="indicatorDescription">
+                    Life expectancy at birth shows the average number of years a newborn is expected to live.
+                </p>
+            </div>
+
+            <div class="stats-box">
+                <h3>Summary</h3>
+                <p><strong>Countries with data:</strong> <span id="countryCount">-</span></p>
+                <p><strong>Minimum:</strong> <span id="minValue">-</span></p>
+                <p><strong>Maximum:</strong> <span id="maxValue">-</span></p>
+                <p><strong>Average:</strong> <span id="avgValue">-</span></p>
+            </div>
+
+            <div class="legend-box">
+                <h3>Legend</h3>
+                <div id="legend"></div>
+            </div>
+
+            <div class="note-box">
+                <p>
+                    Data Source: World Bank API<br>
+                    Boundary Source: World Country GeoJSON
+                </p>
+            </div>
+        </aside>
+
+        <main class="map-area">
+            <div id="loadingMessage">Loading map and live API data...</div>
+            <div id="map"></div>
+        </main>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
